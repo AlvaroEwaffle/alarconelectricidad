@@ -1,0 +1,211 @@
+---
+import Gallery from './Gallery.astro';
+
+const services = {
+  "instalaciones": {
+    title: "Instalaciones Domiciliarias",
+    description: "Servicios completos de instalación eléctrica para hogares",
+    items: [
+      {
+        title: "Instalación eléctrica nueva",
+        description: "Diseño y ejecución de instalaciones eléctricas para viviendas nuevas, con cumplimiento de normativas vigentes y alto estándar de seguridad.",
+        icon: "🏠"
+      },
+      {
+        title: "Instalación de luminarias",
+        description: "Montaje de lámparas, plafones, focos, y sistemas de iluminación LED de eficiencia energética.",
+        icon: "💡"
+      },
+      {
+        title: "Instalación de sistemas de climatización",
+        description: "Conexión de sistemas de calefacción, ventilación y aire acondicionado (HVAC) de acuerdo a las necesidades del hogar.",
+        icon: "❄️"
+      },
+      {
+        title: "Instalación de enchufes y tomas eléctricas",
+        description: "Instalación de puntos de energía en espacios según la distribución de cada hogar, adaptados a necesidades de dispositivos electrónicos.",
+        icon: "🔌"
+      },
+      {
+        title: "Cableado estructurado",
+        description: "Instalación de redes eléctricas y cableado adecuado para uso doméstico y para el soporte de nuevas tecnologías.",
+        icon: "🔗"
+      }
+    ]
+  },
+  "reparaciones": {
+    title: "Reposición de Fallas y Cambio de Equipos",
+    description: "Diagnóstico y reparación de problemas eléctricos existentes",
+    items: [
+      {
+        title: "Diagnóstico de fallas eléctricas",
+        description: "Identificación precisa de problemas en sistemas eléctricos residenciales e industriales mediante herramientas tecnológicas avanzadas.",
+        icon: "🔍"
+      },
+      {
+        title: "Reposición de cables y conductores eléctricos",
+        description: "Sustitución de cables dañados o envejecidos para garantizar la seguridad y eficiencia del sistema eléctrico.",
+        icon: "🔌"
+      },
+      {
+        title: "Cambio de tableros eléctricos",
+        description: "Actualización o reemplazo de tableros eléctricos residenciales o industriales para cumplir con las normativas y mejorar la distribución de energía.",
+        icon: "⚡"
+      },
+      {
+        title: "Reposición de equipos de protección eléctrica",
+        description: "Instalación de nuevos dispositivos de protección como interruptores automáticos, fusibles y sistemas de puesta a tierra.",
+        icon: "🛡️"
+      },
+      {
+        title: "Cambio de equipos eléctricos obsoletos",
+        description: "Reemplazo de equipos como transformadores, interruptores, y sistemas de distribución que han llegado al final de su vida útil o no cumplen con los estándares modernos.",
+        icon: "🔄"
+      }
+    ]
+  }
+};
+---
+
+<section id="servicios" class="py-20 relative" 
+         style="background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9)), url('/FOTO4.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <!-- Overlay for better text readability -->
+  <div class="absolute inset-0 bg-white/20"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-main mb-6">
+        Nuestros Servicios
+      </h2>
+      <p class="text-xl text-main/80 max-w-3xl mx-auto">
+        Soluciones integrales para instalaciones y mantenimiento eléctrico tanto a nivel domiciliario como industrial
+      </p>
+    </div>
+
+    <!-- Service Tabs -->
+    <div class="mb-12">
+      <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+        <button 
+          id="tab-instalaciones" 
+          class="tab-button px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-hover text-white"
+          data-tab="instalaciones"
+        >
+          🏠 Instalaciones Domiciliarias
+        </button>
+        <button 
+          id="tab-reparaciones" 
+          class="tab-button px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-soft text-main hover:bg-hover hover:text-white"
+          data-tab="reparaciones"
+        >
+          🔧 Reparaciones y Mantenimiento
+        </button>
+      </div>
+    </div>
+
+    <!-- Service Content -->
+    <div id="service-content">
+      <!-- Instalaciones Tab -->
+      <div id="content-instalaciones" class="tab-content">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold text-main mb-4">{services.instalaciones.title}</h3>
+          <p class="text-lg text-main/80 max-w-2xl mx-auto">{services.instalaciones.description}</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.instalaciones.items.map((item, index) => (
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-soft/50">
+              <div class="text-center mb-4">
+                <div class="text-4xl mb-4">{item.icon}</div>
+                <h4 class="text-xl font-bold text-main mb-3">{item.title}</h4>
+                <p class="text-main/80 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Reparaciones Tab -->
+      <div id="content-reparaciones" class="tab-content hidden">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold text-main mb-4">{services.reparaciones.title}</h3>
+          <p class="text-lg text-main/80 max-w-2xl mx-auto">{services.reparaciones.description}</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.reparaciones.items.map((item, index) => (
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-soft/50">
+              <div class="text-center mb-4">
+                <div class="text-4xl mb-4">{item.icon}</div>
+                <h4 class="text-xl font-bold text-main mb-3">{item.title}</h4>
+                <p class="text-main/80 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="mt-20">
+      <Gallery 
+        images={[
+          "/FOTO1.jpg",
+          "/FOTO2.jpg", 
+          "/FOTO3.jpg",
+          "/FOTO4.jpg",
+          "/FOTO5.jpg",
+          "/FOTO6.jpg",
+          "/FOTO7.jpg",
+          "/FOTO8.jpg",
+          "/FOTO9.jpg",
+          "/FOTO10.jpg",
+          "/FOTO11.jpg",
+          "/FOTO12.jpg",
+          "/FOTO13.jpg",
+          "/FOTO14.jpg",
+          "/FOTO15.jpg"
+        ]}
+        title="Galería de Nuestros Trabajos"
+        description="Algunos de nuestros proyectos más destacados en Talca y Región del Maule"
+      />
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-16 text-center">
+      <div class="bg-gradient-to-r from-highlight to-blue-300 rounded-2xl p-8 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-main mb-4">¿Necesitas una cotización personalizada?</h3>
+        <p class="text-main/90 mb-6">Contacta con nosotros para recibir una evaluación gratuita de tu proyecto</p>
+        <a href="https://wa.me/56937418142" target="_blank" 
+           class="inline-block bg-main text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-main/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          📞 Solicitar cotización gratuita
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Update button styles
+        tabButtons.forEach(btn => {
+          btn.classList.remove('bg-hover', 'text-white');
+          btn.classList.add('bg-soft', 'text-main', 'hover:bg-hover', 'hover:text-white');
+        });
+        button.classList.remove('bg-soft', 'text-main', 'hover:bg-hover', 'hover:text-white');
+        button.classList.add('bg-hover', 'text-white');
+        
+        // Show/hide content
+        tabContents.forEach(content => {
+          content.classList.add('hidden');
+        });
+        document.getElementById(`content-${targetTab}`).classList.remove('hidden');
+      });
+    });
+  });
+</script>

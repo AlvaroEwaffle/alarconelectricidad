@@ -1,0 +1,104 @@
+---
+const services = [
+  { name: "Instalaciones Domiciliarias", href: "/servicios/instalaciones-domiciliarias" },
+  { name: "Reposición de Fallas", href: "/servicios/reposicion-fallas" },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-3">
+          <img src="/logo.png" alt="Alarcón Electricidad" class="h-10 w-auto" />
+          <span class="text-2xl font-bold text-main">Alarcón Electricidad</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="#servicios" class="text-main hover:text-hover transition-colors">
+            Servicios
+          </a>
+          <a href="#testimonios" class="text-main hover:text-hover transition-colors">
+            Testimonios
+          </a>
+          <a href="#contacto" class="text-main hover:text-hover transition-colors">
+            Contacto
+          </a>
+          
+          <!-- Services Dropdown -->
+          <div class="relative group">
+            <button class="text-main hover:text-hover transition-colors flex items-center">
+              Servicios
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div class="py-1">
+                {services.map((service) => (
+                  <a href={service.href} class="block px-4 py-2 text-sm text-main hover:bg-soft hover:text-hover transition-colors">
+                    {service.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a href="https://wa.me/56937418142" target="_blank" 
+           class="bg-hover text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors font-medium">
+          Agenda tu evaluación gratuita
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-main hover:text-hover focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+        <a href="#servicios" class="block px-3 py-2 text-main hover:text-hover transition-colors">
+          Servicios
+        </a>
+        <a href="#testimonios" class="block px-3 py-2 text-main hover:text-hover transition-colors">
+          Testimonios
+        </a>
+        <a href="#contacto" class="block px-3 py-2 text-main hover:text-hover transition-colors">
+          Contacto
+        </a>
+        <a href="https://wa.me/56937418142" target="_blank" 
+           class="block px-3 py-2 bg-hover text-white rounded-lg hover:bg-red-600 transition-colors font-medium text-center">
+          Agenda tu evaluación gratuita
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>

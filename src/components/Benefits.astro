@@ -1,0 +1,71 @@
+---
+const benefits = [
+  {
+    icon: "⚡",
+    title: "Instalaciones Seguras",
+    description: "Cumplimiento total de normativas SEC y estándares de seguridad internacionales"
+  },
+  {
+    icon: "🔧",
+    title: "Mantenimiento Preventivo",
+    description: "Evita fallas futuras con nuestro servicio de mantenimiento especializado"
+  },
+  {
+    icon: "💡",
+    title: "Eficiencia Energética",
+    description: "Optimizamos tu consumo eléctrico con tecnología LED y sistemas inteligentes"
+  },
+  {
+    icon: "🏠",
+    title: "Atención Domiciliaria",
+    description: "Servicio personalizado en Talca y Región del Maule con respuesta rápida"
+  },
+  {
+    icon: "📋",
+    title: "Certificación SEC",
+    description: "Profesional certificado con más de 10 años de experiencia en el rubro"
+  }
+];
+---
+
+<section id="beneficios" class="py-20 relative" 
+         style="background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9)), url('/FOTO3.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <!-- Overlay for better text readability -->
+  <div class="absolute inset-0 bg-white/30"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-main mb-6">
+        ¿Por qué elegirnos?
+      </h2>
+      <p class="text-xl text-main/80 max-w-3xl mx-auto">
+        Ofrecemos soluciones eléctricas integrales con la máxima calidad, seguridad y eficiencia
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {benefits.map((benefit, index) => (
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-soft/50">
+          <div class="text-center">
+            <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              {benefit.icon}
+            </div>
+            <h3 class="text-2xl font-bold text-main mb-4 group-hover:text-hover transition-colors">
+              {benefit.title}
+            </h3>
+            <p class="text-main/80 leading-relaxed">
+              {benefit.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional CTA -->
+    <div class="text-center mt-16">
+      <a href="https://wa.me/56937418142" target="_blank" 
+         class="inline-block bg-highlight text-main px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-300 transition-all duration-300 transform hover:scale-105 shadow-lg">
+        💬 Consulta sin compromiso
+      </a>
+    </div>
+  </div>
+</section>

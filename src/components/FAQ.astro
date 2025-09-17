@@ -1,0 +1,117 @@
+---
+const faqs = [
+  {
+    question: "¿Cuánto tiempo toma una instalación eléctrica completa?",
+    answer: "El tiempo depende del tamaño y complejidad del proyecto. Una casa promedio toma entre 3-7 días, mientras que instalaciones más complejas pueden requerir 1-2 semanas. Siempre proporcionamos un cronograma detallado antes de comenzar."
+  },
+  {
+    question: "¿Ofrecen garantía en sus trabajos?",
+    answer: "Sí, todos nuestros trabajos incluyen garantía. Las instalaciones nuevas tienen garantía de 2 años, y las reparaciones tienen garantía de 1 año. Además, utilizamos materiales de primera calidad con garantía del fabricante."
+  },
+  {
+    question: "¿Trabajan solo en Talca o también en otras ciudades?",
+    answer: "Trabajamos principalmente en Talca y la Región del Maule. Para proyectos fuera de esta zona, evaluamos caso a caso. Siempre priorizamos la calidad del servicio y la puntualidad en nuestras entregas."
+  },
+  {
+    question: "¿Qué incluye la evaluación gratuita?",
+    answer: "La evaluación gratuita incluye: inspección del sistema eléctrico actual, identificación de problemas o mejoras necesarias, estimación de costos, cronograma de trabajo y recomendaciones de optimización energética. No hay compromiso de compra."
+  },
+  {
+    question: "¿Están certificados por la SEC?",
+    answer: "Sí, Francisco Alarcón está certificado por la Superintendencia de Electricidad y Combustibles (SEC) y cuenta con más de 10 años de experiencia en el rubro. Todos nuestros trabajos cumplen con las normativas vigentes."
+  }
+];
+---
+
+<section id="faq" class="py-20 relative" 
+         style="background-image: linear-gradient(rgba(224, 224, 224, 0.95), rgba(224, 224, 224, 0.9)), url('/FOTO5.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <!-- Overlay for better text readability -->
+  <div class="absolute inset-0 bg-white/20"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-main mb-6">
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-xl text-main/80 max-w-3xl mx-auto">
+        Resolvemos las dudas más comunes sobre nuestros servicios eléctricos
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <button 
+            class="faq-button w-full px-6 py-6 text-left flex justify-between items-center hover:bg-soft/50 transition-colors duration-200"
+            data-faq={index}
+          >
+            <h3 class="text-lg font-semibold text-main pr-4">{faq.question}</h3>
+            <svg 
+              class="faq-icon w-6 h-6 text-hover transform transition-transform duration-200 flex-shrink-0" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-6">
+            <div class="border-t border-soft pt-4">
+              <p class="text-main/80 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional Help Section -->
+    <div class="mt-16 text-center">
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <h3 class="text-2xl font-bold text-main mb-4">¿No encontraste lo que buscabas?</h3>
+        <p class="text-main/80 mb-6">Estamos aquí para ayudarte con cualquier consulta sobre servicios eléctricos</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/56937418142" target="_blank" 
+             class="inline-block bg-hover text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-600 transition-colors">
+            💬 Chatea por WhatsApp
+          </a>
+          <a href="mailto:alarcon1976suazo@gmail.com" 
+             class="inline-block bg-highlight text-main px-6 py-3 rounded-xl font-semibold hover:bg-blue-300 transition-colors">
+            📧 Envía un email
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    const faqContents = document.querySelectorAll('.faq-content');
+    const faqIcons = document.querySelectorAll('.faq-icon');
+
+    faqButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const content = faqContents[index];
+        const icon = faqIcons[index];
+        const isOpen = !content.classList.contains('hidden');
+
+        // Close all other FAQs
+        faqContents.forEach((c, i) => {
+          if (i !== index) {
+            c.classList.add('hidden');
+            faqIcons[i].style.transform = 'rotate(0deg)';
+          }
+        });
+
+        // Toggle current FAQ
+        if (isOpen) {
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>

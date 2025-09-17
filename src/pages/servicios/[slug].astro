@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Gallery from '../../components/Gallery.astro';
+import { getServiceBySlug, getAllServices } from '../../utils/services.ts';
+
+export async function getStaticPaths() {
+  const services = getAllServices();
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={`${service.title} - Alarcón Electricidad`} description={service.description}>
+  <Header />
+  <main>
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-white to-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <div class="text-6xl mb-6">{service.icon}</div>
+          <h1 class="text-4xl md:text-6xl font-bold text-main mb-6">
+            {service.title}
+          </h1>
+          <p class="text-xl text-main/80 max-w-3xl mx-auto mb-8">
+            {service.description}
+          </p>
+          <a href="https://wa.me/56937418142" target="_blank" 
+             class="inline-block bg-hover text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            📞 {service.cta}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-main mb-6">Servicios Incluidos</h2>
+          <p class="text-xl text-main/80 max-w-3xl mx-auto">
+            Cada proyecto incluye todos estos servicios especializados
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {service.services.map((item, index) => (
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-soft/50">
+              <div class="text-center">
+                <div class="text-4xl mb-4">{item.icon}</div>
+                <h3 class="text-xl font-bold text-main mb-3">{item.title}</h3>
+                <p class="text-main/80 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-20 bg-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-main mb-6">Beneficios de Nuestro Servicio</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {service.benefits.map((benefit, index) => (
+            <div class="flex items-center space-x-4 bg-white rounded-xl p-4 shadow-md">
+              <div class="w-8 h-8 bg-highlight rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-main text-lg">✓</span>
+              </div>
+              <span class="text-main font-medium">{benefit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-main mb-6">Nuestro Proceso de Trabajo</h2>
+          <p class="text-xl text-main/80 max-w-3xl mx-auto">
+            Seguimos un proceso estructurado para garantizar la calidad y satisfacción del cliente
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {service.process.map((step, index) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-hover text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                {index + 1}
+              </div>
+              <h3 class="font-semibold text-main mb-2">Paso {index + 1}</h3>
+              <p class="text-main/80 text-sm">{step}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-highlight to-blue-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-main mb-6">¿Necesitas una cotización?</h2>
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <p class="text-main/80 mb-6 text-lg">Cotización personalizada sin compromiso</p>
+          <a href="https://wa.me/56937418142" target="_blank" 
+             class="inline-block bg-main text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-main/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            💬 Solicitar cotización personalizada
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-soft">
+      <Gallery 
+        images={service.gallery}
+        title={`Galería de ${service.title}`}
+        description={`Proyectos reales de ${service.title.toLowerCase()} realizados en Talca y Región del Maule`}
+      />
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-main text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-6">¿Listo para comenzar tu proyecto?</h2>
+        <p class="text-xl text-white/80 mb-8">
+          Contacta con nosotros para una evaluación gratuita y sin compromiso
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/56937418142" target="_blank" 
+             class="inline-block bg-hover text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors">
+            📱 WhatsApp
+          </a>
+          <a href="mailto:alarcon1976suazo@gmail.com" 
+             class="inline-block bg-highlight text-main px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-300 transition-colors">
+            📧 Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

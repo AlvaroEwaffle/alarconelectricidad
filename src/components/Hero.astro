@@ -1,0 +1,65 @@
+---
+// No props needed for this component
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden" 
+         style="background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('/FOTO1.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <!-- Overlay for better text readability -->
+  <div class="absolute inset-0 bg-white/10"></div>
+  
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto">
+      <!-- Main Heading -->
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-main mb-6 leading-tight">
+        Soluciones Eléctricas
+        <span class="block text-hover">Seguras y Eficientes</span>
+        en Talca
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl text-main/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Francisco Alarcón, especialista eléctrico con certificación SEC. 
+        Te acompañamos en el desarrollo de tu proyecto eléctrico con la máxima seguridad y eficiencia energética.
+      </p>
+      
+      <!-- CTA Button -->
+      <div class="mb-12">
+        <a href="https://wa.me/56937418142" target="_blank" 
+           class="inline-block bg-hover text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          📞 Agenda tu evaluación gratuita
+        </a>
+      </div>
+      
+      <!-- Social Proof -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 max-w-4xl mx-auto shadow-lg">
+        <p class="text-lg text-main/90 mb-4 font-medium">
+          "Alarcón Electricidad ofrece soluciones integrales para instalaciones y mantenimiento eléctrico tanto a nivel domiciliario como industrial, garantizando la seguridad, eficiencia energética y cumplimiento de las normativas vigentes."
+        </p>
+        <div class="flex items-center justify-center space-x-4">
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-details rounded-full"></div>
+            <span class="text-main font-semibold">Certificación SEC</span>
+          </div>
+          <div class="w-px h-6 bg-main/20"></div>
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-highlight rounded-full"></div>
+            <span class="text-main font-semibold">Especialista en Talca</span>
+          </div>
+          <div class="w-px h-6 bg-main/20"></div>
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-hover rounded-full"></div>
+            <span class="text-main font-semibold">Más de 10 años de experiencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-main/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
